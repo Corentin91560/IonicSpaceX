@@ -1,0 +1,58 @@
+<ion-app>
+  <ng-progress></ng-progress>
+  <!-- when=false -->
+  <ion-split-pane>
+    <ion-menu type="overlay">
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <!-- Next launch -->
+        <div *ngIf="false">
+          <ion-card>
+            <ion-card-header>
+              <ion-card-subtitle>
+                <ion-skeleton-text style="width: 5%"></ion-skeleton-text>
+              </ion-card-subtitle>
+              <ion-card-title>
+                <ion-skeleton-text style="width: 20%"></ion-skeleton-text>
+              </ion-card-title>
+            </ion-card-header>
+            <ion-card-content>
+              <p>
+                <ion-skeleton-text></ion-skeleton-text>
+                <ion-skeleton-text></ion-skeleton-text>
+                <ion-skeleton-text></ion-skeleton-text>
+              </p>
+            </ion-card-content>
+          </ion-card>
+        </div>
+        <ion-list>
+          <ion-menu-toggle auto-hide="false" *ngFor="let p of pages">
+            <ion-item [routerLink]="[p.url]" routerDirection="forward"
+              [class.active-menu-item]="selectedPath?.includes(p.title.toLowerCase())">
+              <ion-label>
+                {{ p.title }}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+
+        <div class="fixed-bottom">
+          <ion-item routerLink="/settings" routerDirection="forward">
+            Settings
+          </ion-item>
+          <ion-item [routerLink]="['/about']" routerDirection="forward">
+            About
+          </ion-item>
+          <ion-item>
+            <ion-badge color="danger">v 1.0.0 - dev</ion-badge>
+          </ion-item>
+        </div>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
+</ion-app>
