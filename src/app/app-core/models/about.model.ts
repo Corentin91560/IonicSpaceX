@@ -6,5 +6,5 @@ export interface About {
     organization: string;
     organization_link: string;
     description: string;
-
+    
 }
